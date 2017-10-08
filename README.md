@@ -26,10 +26,10 @@ Open Terminal, navigate to the project folder and run these commands.
 ```sh
 $ npm install
 $ npm install express --save
-$ npm install angularjs
-$ npm install zingchart-angularjs
-$ npm install mocha
-$ npm install request
+$ npm install angularjs --save
+$ npm install zingchart-angularjs --save
+$ npm install mocha --save
+$ npm install request --save
 ```
 
 
