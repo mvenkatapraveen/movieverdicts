@@ -1,0 +1,39 @@
+/* This part is read by every device/viewport */
+body{
+    margin: 110px 10% 10% 10%;
+    font-size: 14px;
+}
+
+@media (min-width: 1200px) {
+  /* This part is only read by viewports wider than 1200 pixels */
+    body{
+        margin: 10%;
+        font-size: 16px;
+    }
+}
+
+.title{
+    font-size: 20px;
+    font-weight: bold;
+}
+/* change the cursor to pointer when hovered on stars */
+span i:hover{
+    cursor: pointer;
+}
+
+/*Selected Stars color*/
+.blueClr{
+    color: #5bbbf7;
+}
+/*Unselected Stars color*/
+.greyClr{
+    color: #b8babc;
+}
+
+
+
+
+
+
+
+

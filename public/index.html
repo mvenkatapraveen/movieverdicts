@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Movie Verdicts</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="css/custom.css">
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+        
+        
+        <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+        <script src="https://cdn.zingchart.com/angular/zingchart-angularjs.js"></script>
+    </head>
+    <body ng-app="movieVerdicts"  ng-controller="homeCtrl">
+        
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/">Movie Verdicts</a>
+            </div>
+
+            <!-- Collect the nav links for toggling -->
+            <div class="collapse navbar-collapse" id="bs-navbar-collapse">
+              <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sort By
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a ng-click="sortMovies('title')">Name</a></li>
+                        <li><a ng-click="sortMovies('releaseDate')">Release Date</a></li>
+                        <li><a ng-click="sortMovies('rating')">Rating</a></li>
+                    </ul>
+                </li>
+            </ul>
+              
+              
+            </div>
+          </div>
+        </nav>
+        
+        <!-- Thumbnails of displaying Movies images and its description -->
+        <div class="row">
+            <!--Iterate movies object and display movie details-->
+            <div class="col-sm-6 col-md-4 col-lg-4" ng-repeat="movie in movies">
+                
+                <div class="thumbnail">
+                    <img ng-src="{{movie.image}}" class="responsive-img">
+                    
+                    <div class="caption">
+                        <p class="title">{{ movie.title }}</p>
+                        <p>{{ movie.releaseDate }}</p>
+                        <p ng-if="movie.rating != '0'"> Rating {{movie.rating}}</p>
+                        <p ng-if="movie.rating == '0'">Not Rated</p>
+                        <span ng-repeat="n in getFilledStars(movie.rating) track by $index">
+                            <i class="material-icons blueClr" ng-click="!isDisabled(movie.releaseDate)||updateStar($parent.$index, $index)">star</i>
+                        </span>
+                        <span ng-repeat="n in getUnFilledStars(movie.rating) track by $index">
+                            <i class="material-icons greyClr" ng-click="!isDisabled(movie.releaseDate)||updateUnStar($parent.$index,movie.rating, $index)">star_border</i>   
+                        </span>
+                    </div>
+                
+                </div>
+                
+            </div>
+        </div>
+        <hr>
+        
+        <!--Bar Chart-->
+        <div class="row">
+            <div zingchart id="movStats" zc-json="chartObj" zc-width="100%" zc-height="500px"></div>
+        </div>
+        
+        
+        <script src="js/module.js"></script> 
+        <script src="js/controller.js"></script> 
+    </body>
+</html>
