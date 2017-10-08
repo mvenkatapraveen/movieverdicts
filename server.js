@@ -32,6 +32,6 @@ app.post('/movies', function(req, res) {
     });
 });
 
-app.listen(8080, function() {
+app.listen(process.env.PORT || 8080, function() {
     console.log('Service now app listening on port 8080!');
 });
