@@ -33,9 +33,17 @@ $ npm install request --save
 ```
 
 
-### Steps to start application
-Open Terminal, navigate to the project folder and run the following command
+### Steps to start application locally
+To Download or clone the project, open terminal
+
 ```sh
+$ git clone https://github.com/mvenkatapraveen/movieverdicts
+```
+
+Navigate to the movieverdicts folder and run the following command
+
+```sh
+$ npm install
 $ npm start
 ```
 Launch http://localhost:8080/ in a web browser
